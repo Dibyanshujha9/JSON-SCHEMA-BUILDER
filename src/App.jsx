@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { Row, Col, Card } from 'antd';
+import SchemaBuilder from './components/SchemaBuilder';
+import JsonPreview from './components/JsonPreview';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [schema, setSchema] = useState([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Row gutter={16} style={{ padding: '20px' }}>
+      <Col span={12}>
+        <Card title="Schema Builder">
+          <SchemaBuilder fields={schema} onChange={setSchema} />
+        </Card>
+      </Col>
+      <Col span={12}>
+        <Card title="JSON Preview">
+          <JsonPreview data={schema} />
+        </Card>
+      </Col>
+    </Row>
+  );
+};
 
-export default App
+export default App;
