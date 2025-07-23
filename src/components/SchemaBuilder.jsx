@@ -6,7 +6,7 @@ const SchemaBuilder = ({ fields, onChange }) => {
   const handleAddField = () => {
     onChange([...fields, { name: '', type: 'String', children: [] }]);
   };
-
+// handle field changes 
   const handleFieldChange = (index, newField) => {
     const updated = [...fields];
     updated[index] = newField;
